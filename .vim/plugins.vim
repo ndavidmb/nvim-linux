@@ -54,7 +54,9 @@ Plug 'mattn/emmet-vim'
 
 " git
 Plug 'tpope/vim-fugitive'
-
 Plug 'tpope/vim-repeat'
+
+" start
+Plug 'mhinz/vim-startify'
 
 call plug#end()

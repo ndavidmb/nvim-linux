@@ -37,6 +37,8 @@ let NERDTreeMinimalUI=1
 let NERDTreeDirArrows=1
 let NERDTreeShowLineNumbers=1
 let NERDTreeMapOpenInTab='tt'
+let g:NERDTreeDirArrowExpandable = '›'
+let g:NERDTreeDirArrowCollapsible = '•'
 
 let g:javascript_plugin_flow = 1
 
@@ -62,9 +64,14 @@ autocmd FileType html EmmetInstall
 let g:user_emmet_leader_key = '<C-S>'
 
 " coc
-"autocmd FileType python let b:coc_suggest_disable = 1
-"autocmd FileType javascript let b:coc_suggest_disable = 1
 autocmd FileType scss setl iskeyword+=@-@
+let g:coc_global_extensions=[
+                  \'coc-omnisharp',
+                  \'coc-tsserver',
+                  \'coc-angular',
+                  \'coc-html',
+                  \'coc-emmet', 
+                  \'coc-prettier']
 
 " vim fugitive
 command! -bang -nargs=? -complete=dir GFiles
@@ -77,6 +84,9 @@ command! -bang -nargs=? -complete=dir Files
   \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
+" easymotion
+let g:EasyMotion_smartcase=1
 
 " if hidden is not set, TextEdit might fail.
 set hidden
@@ -106,3 +116,30 @@ set diffopt+=vertical
 
 
 let $FZF_DEFAULT_OPTS='--layout=reverse'
+let g:startify_session_dir = '~/.config/vim/.vim/sessions'
+let g:startify_bookmarks = [
+                  \{'d': '~/Documentos'},
+                  \{'v': '~/.config/vim'},
+                  \]
+
+let g:startify_fortune_use_unicode = 1
+
+let g:header_string = [
+                  \'• • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • •',
+                  \'•      ████    █████████████████     ██████  ██████      ██████████████ •',
+                  \'•      ████    ████        ██        ██   ████    ██     ██   ██   ████ •',
+                  \'•      ████    █████████   ██        ██   ████    ██     ██   ██   ████ •',
+                  \'• ██   ████    ██     ██   ██        ██   ████    ██     ██   ██        •',
+                  \'•  █████  ██████ ███████   ██        ██████  ██████      ██   ██   ████ •',
+                  \'• • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • •',
+                  \]
+let g:startify_custom_header = 'startify#pad(g:header_string)'
+
+let g:startify_commands = [{'g': ':G | only'}]
+
+let g:startify_lists = [
+      \ { 'header': ['   Sessions'],       'type': 'sessions' },
+      \ { 'header': ['   MRU '. getcwd()], 'type': 'dir' },
+      \ { 'header': ['   Bookmarks'],      'type': 'bookmarks' },
+      \ { 'header': ['   Commands'],      'type': 'commands' }
+      \ ]

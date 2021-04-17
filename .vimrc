@@ -15,7 +15,7 @@ so ~/.config/vim/.vim/plugins.vim
 so ~/.config/vim/.vim/maps.vim
 so ~/.config/vim/.vim/plugin-config.vim
 
-let ayucolor="mirage"
+let ayucolor="dark"
 
 colorscheme ayu
 

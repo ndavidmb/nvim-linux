@@ -14,37 +14,28 @@ nmap , $a,<Esc>
 nmap <silent><Leader>w :w<CR>
 nmap <silent><Leader>q :q<CR>
 nmap <silent><Leader>nn :noh<CR>
+
 " Minimize tags
 nmap <Leader>sm zf%
 nmap <Leader>sn za
 
-" maps Plugin emmet-vim
-nmap <Leader>sr <C-S>,
-vmap <Leader>sr <C-S>,
-
-"marks
-nmap <silent><Leader>dd :delmarks!<CR>
-nmap <silent><Leader>dl :delmarks AD<CR>
-nmap <silent><Leader>dj 'A
-nmap <silent><Leader>dk 'D
-nmap <silent><Leader>du mA
-nmap <silent><Leader>di mD
-nmap <Leader>ds :marks<CR>
-
 " maps insert mode
-inoremap <C-D> <Esc>
+inoremap jj <Esc>
 inoremap <C-H> <Left>
 inoremap <C-L> <Right>
 
 " maps visual mode
 vmap <C-D> <Esc>
 
+" Menu
+nnoremap <Leader>ss :SSave<CR>
+nnoremap <Leader>sd :SClose<CR>
 
 " indent
 nmap <Leader>se i<CR><Esc>
 nmap <Leader>sa a<CR><Esc>ko
-nmap <Leader>sp o<C-R>"<Esc>
-nmap <Leader>si <Plug>(Prettier)
+nmap <Leader>sp o<C-R>*<Esc>
+nmap <Leader>si :CocCommand prettier.formatFile<CR>
 
 " shorter commands
 cnoreabbrev blame Gblame
@@ -73,8 +64,8 @@ nmap <silent> gr <Plug>(coc-references)
 nnoremap <leader>kp :let @*=expand("%")<CR>
 
 " tabs navigation
-map <Leader>h :tabprevious<cr>
-map <Leader>l :tabnext<cr>
+map <silent><S-j>h :tabprevious<cr>
+map <silent><S-k>l :tabnext<cr>
 
 " buffers
 map <Leader>ob :Buffers<cr>
@@ -101,7 +92,7 @@ endfunction
 " faster scrolling
 nnoremap <silent> <C-e> 10<C-e>
 nnoremap <silent> <C-y> 10<C-y>
-nmap <Leader>f <Plug>(easymotion-s2)
+nmap <Leader>f <Plug>(easymotion-bd-f)
 
 
 " git
