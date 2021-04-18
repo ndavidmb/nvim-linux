@@ -72,6 +72,10 @@ let g:coc_global_extensions=[
                   \'coc-html',
                   \'coc-emmet', 
                   \'coc-prettier']
+nmap <Leader>rn  <Plug>(coc-rename)
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                        \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " vim fugitive
 command! -bang -nargs=? -complete=dir GFiles
@@ -119,7 +123,7 @@ let $FZF_DEFAULT_OPTS='--layout=reverse'
 let g:startify_session_dir = '~/.config/vim/.vim/sessions'
 let g:startify_bookmarks = [
                   \{'d': '~/Documentos'},
-                  \{'v': '~/.config/vim'},
+                  \{'v': '~/.config/nvim-linux'},
                   \]
 
 let g:startify_fortune_use_unicode = 1

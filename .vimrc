@@ -11,9 +11,9 @@ set showmatch
 set sw=2
 set relativenumber
 set termguicolors
-so ~/.config/vim/.vim/plugins.vim
-so ~/.config/vim/.vim/maps.vim
-so ~/.config/vim/.vim/plugin-config.vim
+so ~/.config/nvim-linux/.vim/plugins.vim
+so ~/.config/nvim-linux/.vim/maps.vim
+so ~/.config/nvim-linux/.vim/plugin-config.vim
 
 let ayucolor="dark"
 
