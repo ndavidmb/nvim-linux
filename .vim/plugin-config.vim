@@ -18,7 +18,7 @@ let g:lightline = {
       \   'gitbranch': 'fugitive#head',
       \   'kitestatus': 'kite#statusline'
       \ },
-      \ 'colorscheme': 'gruvbox',
+      \ 'colorscheme': 'dracula',
       \ 'subseparator': {
       \   'left': '',
       \   'right': ''
@@ -32,25 +32,33 @@ let NERDTreeAutoDeleteBuffer=1
 let NERDTreeMinimalUI=1
 let NERDTreeDirArrows=1
 let NERDTreeShowLineNumbers=1
-let NERDTreeMapOpenInTab='\t'
+let NERDTreeMapOpenInTab='tt'
 
 let g:javascript_plugin_flow = 1
 
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsSnippetDirectories=[$HOME.'/config/.vim/UltiSnips']
+let g:UltiSnipsSnippetDirectories=['~/.config/nvim-linux/.vim/UltiSnips']
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
 
-" kite
-let g:kite_supported_languages = ['javascript', 'python']
+"http rest
+let g:vim_http_split_vertically = 1
+let g:vim_http_tempbuffer = 1
 
-" tmux navigator
-let g:tmux_navigator_no_mappings = 1
+"coc
+let g:coc_global_extensions=[
+                  \'coc-tsserver',
+                  \'coc-angular',
+                  \'coc-html',
+                  \'coc-html-css-support',
+                  \'coc-emmet', 
+                  \'coc-prettier',
+                  \'coc-tabnine']
 
-" coc
-autocmd FileType python let b:coc_suggest_disable = 1
-autocmd FileType javascript let b:coc_suggest_disable = 1
+nmap <Leader>rn <Plug>(coc-rename)
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                        \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 autocmd FileType scss setl iskeyword+=@-@
 
 " vim fugitive
@@ -85,49 +93,32 @@ set signcolumn=yes
 " fugitive always vertical diffing
 set diffopt+=vertical
 
-
-
-" Highlight symbol under cursor on CursorHold
-
-
 let $FZF_DEFAULT_OPTS='--layout=reverse'
-"let g:fzf_layout = { 'window': 'call FloatingFZF()' }
-"function! FloatingFZF()
-  "let buf = nvim_create_buf(v:false, v:true)
-  "call setbufvar(buf, '&signcolumn', 'no')
-  "let height = float2nr((&lines - 3) / 2)
-  "let width = float2nr(&columns - (&columns * 2 / 10))
-  "let col = float2nr((&columns - width) / 2)
-  "let row = float2nr((&lines - height) / 2)
-  "let opts = {
-        "\ 'relative': 'editor',
-        "\ 'row': row,
-        "\ 'col': col,
-        "\ 'width': width,
-        "\ 'height': height
-        "\ }
-  "call nvim_open_win(buf, v:true, opts)
-"endfunction
 
-"function! SearchPatternInFile(pattern)
-    "" Save cursor position.
-    "let save_cursor = getcurpos()
+let g:startify_session_dir = '~/.config/vim/.vim/sessions'
+let g:startify_bookmarks = [
+                  \{'d': '~/Documentos'},
+                  \{'v': '~/.config/configs'},
+                  \]
 
-    "" Set cursor position to beginning of file.
-    "call cursor(0, 0)
+let g:startify_fortune_use_unicode = 1
 
-    "" Search for the string 'hello' with a flag c.  The c flag means that a
-    "" match at the cursor position will be accepted.
-    "let search_result = search(a:pattern, "c")
+let g:header_string = [
+                  \'• • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • •',
+                  \'•      ████    █████████████████     ██████  ██████      ██████████████ •',
+                  \'•      ████    ████        ██        ██   ████    ██     ██   ██   ████ •',
+                  \'•      ████    █████████   ██        ██   ████    ██     ██   ██   ████ •',
+                  \'• ██   ████    ██     ██   ██        ██   ████    ██     ██   ██        •',
+                  \'•  █████  ██████ ███████   ██        ██████  ██████      ██   ██   ████ •',
+                  \'• • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • •',
+                  \]
+let g:startify_custom_header = 'startify#pad(g:header_string)'
 
-    "" Set the cursor back at the saved position.  The setpos function was
-    "" used here because the return value of getcurpos can be used directly
-    "" with it, unlike the cursor function.
-    "call setpos('.', save_cursor)
+let g:startify_commands = [{'g': ':G | only'}]
 
-    "" If the search function didn't find the pattern, it will have
-    "" returned 0, thus it wasn't found.  Any other number means that an instance
-    "" has been found.
-    "return search_result
-"endfunction
-
+let g:startify_lists = [
+      \ { 'header': ['   Sessions'],       'type': 'sessions' },
+      \ { 'header': ['   MRU '. getcwd()], 'type': 'dir' },
+      \ { 'header': ['   Bookmarks'],      'type': 'bookmarks' },
+      \ { 'header': ['   Commands'],      'type': 'commands' }
+      \ ]

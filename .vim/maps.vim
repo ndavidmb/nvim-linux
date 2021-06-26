@@ -1,23 +1,37 @@
 let mapleader=" "
 
-" testing
-nnoremap <Leader>t :TestNearest<CR>
-nnoremap <Leader>T :TestFile<CR>
-nnoremap <Leader>TT :TestSuite<CR>
-
 " split resize
-nnoremap <Leader>> 10<C-w>>
-nnoremap <Leader>< 10<C-w><
+nnoremap <Leader>+ 10<C-w>>
+nnoremap <Leader>- 10<C-w><
 
 " quick semi
-nnoremap <Leader>; $a;<Esc>
+nmap ; $a;<Esc>
+nmap , $a,<Esc>
+nmap <silent><Leader>w :w<CR>
+nmap <silent><Leader>q :q<CR>
+nmap <silent><Leader>nn :noh<CR>
+nmap <silent><Leader>al :tabonly<CR>
+nmap <silent>Y yyp
 
-nnoremap <Leader>w :w<CR>
-nnoremap <Leader>q :q<CR>
+" Minimize tags
+nmap <Leader>sm zf%
+nmap <Leader>sn za
+
+" maps insert mode
+inoremap <C-H> <Left>
+inoremap <C-L> <Right>
+
+" Menu
+nnoremap <Leader>ss :SSave<CR>
+nnoremap <Leader>sd :SClose<CR>
+
+" indent
+nmap <Leader>se i<CR><Esc>
+nmap <Leader>sp o<Esc>p
+nmap <Leader>si :CocCommand prettier.formatFile<CR>
+
 " shorter commands
-cnoreabbrev tree NERDTreeToggle
 cnoreabbrev blame Gblame
-cnoreabbrev find NERDTreeFind
 cnoreabbrev diff Gdiff
 
 " plugs
@@ -25,52 +39,51 @@ map <Leader>nt :NERDTreeFind<CR>
 map <Leader>p :Files<CR>
 map <Leader>ag :Ag<CR>
 
-" tmux navigator
-nnoremap <silent> <Leader><C-h> :TmuxNavigateLeft<cr>
-nnoremap <silent> <Leader><C-j> :TmuxNavigateDown<cr>
-nnoremap <silent> <Leader><C-k> :TmuxNavigateUp<cr>
-nnoremap <silent> <Leader><C-l> :TmuxNavigateRight<cr>
 
-" Use <c-space> to trigger completion.
-"inoremap <silent><expr> <c-space> coc#refresh()
- 
+" coc menu
+inoremap <expr><C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
+inoremap <expr><C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
+
 " Remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
-" diagnostics
-nnoremap <leader>kp :let @*=expand("%")<CR>
-
 " tabs navigation
-map <Leader>h :tabprevious<cr>
-map <Leader>l :tabnext<cr>
+map <silent>J :tabprevious<cr>
+map <silent>K :tabnext<cr>
 
 " buffers
 map <Leader>ob :Buffers<cr>
+nnoremap <C-Q> :call ReOpenTerminal()<CR>
+function! ReOpenTerminal()
+  execute "bel 10 sp"
+  execute "b term"
+  execute "set nonu"
+  execute "set nornu"
+
+  " toggle insert on enter/exit
+  silent au BufLeave <buffer> stopinsert!
+  silent au BufWinEnter,WinEnter <buffer> startinsert!
+
+  " set maps inside terminal buffer
+  execute "tnoremap <buffer> <C-h> <C-\\><C-n><C-w><C-h>"
+  execute "tnoremap <buffer> <C-t> <C-\\><C-n>:q<CR>"
+  execute "tnoremap <buffer> <C-\\><C-\\> <C-\\><C-n>"
+
+  startinsert!
+endfunction
 
 
 " faster scrolling
-nnoremap <C-j> 10<C-e>
-nnoremap <C-k> 10<C-y>
-nmap <Leader>s <Plug>(easymotion-s2)
+nmap <Leader>f <Plug>(easymotion-s2)
 
 " git
 nnoremap <Leader>G :G<cr>
-nnoremap <Leader>gp :Gpush<cr>
-nnoremap <Leader>gl :Gpull<cr>
-
-" run current file
-nnoremap <Leader>x :!node %<cr>
-
-" Use <c-space> to trigger completion.
-if &filetype == "javascript" || &filetype == "python"
-  inoremap <c-space> <C-x><C-u>
-else
-  inoremap <silent><expr> <c-space> coc#refresh()
-endif
-
+nnoremap <Leader>gp :Git push<cr>
+nnoremap <Leader>gl :Git pull<cr>
+nnoremap <Leader>ga :Git add .<cr>
 
 set splitright
 function! OpenTerminal()
@@ -88,7 +101,7 @@ function! OpenTerminal()
     execute "q"
   else
     " open terminal
-    execute "vsp term://zsh"
+    execute "bel 10 sp term://zsh"
 
     " turn off numbers
     execute "set nonu"
@@ -99,9 +112,9 @@ function! OpenTerminal()
     silent au BufWinEnter,WinEnter <buffer> startinsert!
 
     " set maps inside terminal buffer
-    execute "tnoremap <buffer> <C-h> <C-\\><C-n><C-w><C-h>"
+    execute "tnoremap <buffer> <C-k> <C-\\><C-n><C-w><C-k>"
     execute "tnoremap <buffer> <C-t> <C-\\><C-n>:q<CR>"
-    execute "tnoremap <buffer> <C-\\><C-\\> <C-\\><C-n>"
+    execute "tnoremap <buffer> <C-h> <C-\\><C-n>"
 
     startinsert!
   endif
