@@ -4,7 +4,7 @@ let g:closetag_filenames = '*.html,*.js,*.jsx,*.ts,*.tsx'
 let g:lightline = {
       \ 'active': {
       \   'left': [['mode', 'paste'], [], ['relativepath', 'modified']],
-      \   'right': [['kitestatus'], ['filetype', 'percent', 'lineinfo'], ['gitbranch']]
+      \   'right': [['filetype', 'percent', 'lineinfo'], ['gitbranch']]
       \ },
       \ 'inactive': {
       \   'left': [['inactive'], ['relativepath']],
@@ -16,7 +16,6 @@ let g:lightline = {
       \ },
       \ 'component_function': {
       \   'gitbranch': 'fugitive#head',
-      \   'kitestatus': 'kite#statusline'
       \ },
       \ 'colorscheme': 'dracula',
       \ 'subseparator': {
@@ -60,7 +59,6 @@ nmap <Leader>rn <Plug>(coc-rename)
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
                         \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 autocmd FileType scss setl iskeyword+=@-@
-
 " vim fugitive
 command! -bang -nargs=? -complete=dir GFiles
   \ call fzf#vim#gitfiles(<q-args>, fzf#vim#with_preview(), <bang>0)

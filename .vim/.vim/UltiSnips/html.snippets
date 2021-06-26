@@ -1,0 +1,22 @@
+snippet ngif "*ngIf" 
+*ngIf="$1"
+endsnippet
+
+snippet ngfor "*ngFor" 
+*ngFor="let ${1:item} of ${2:items}"
+endsnippet
+
+snippet ngmodel "ngModel" 
+[(ngModel)] = "$1"
+endsnippet
+
+snippet tag "etiqueta" 
+<${1:div}>
+	$2
+</${1/(\w+).*/$1/}>
+endsnippet
+
+snippet tgl "etiqueta ln" 
+<${1:div}>$2</${1/(\w+).*/$1/}>
+endsnippet
+

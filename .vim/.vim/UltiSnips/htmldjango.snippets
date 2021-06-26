@@ -1,0 +1,43 @@
+snippet block "block python"
+{% block $1 %}
+	${2:content}
+{% endblock $1 %}
+endsnippet
+
+snippet ext "extends python"
+{% extends '$1' %}
+endsnippet
+
+snippet ext "extends python"
+{% csrf_token %}
+endsnippet
+
+snippet url "url python"
+{% url '$1' %}
+endsnippet
+
+snippet inc "include python"
+{% include '$1' %}
+endsnippet
+
+snippet if "if template"
+{% if $1 %}
+	${2:content}
+{% endif %}
+endsnippet
+
+snippet for "for template"
+{% for ${1:item} in ${2:items} %}
+	${3:content}
+{% endfor %}
+endsnippet
+
+snippet tag "etiqueta" 
+<${1:div}>
+$2
+</${1/(\w+).*/$1/}>
+endsnippet
+
+snippet tgl "etiqueta ln" 
+<${1:div}>$2</${1/(\w+).*/$1/}>
+endsnippet

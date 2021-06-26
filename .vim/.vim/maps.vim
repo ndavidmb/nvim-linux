@@ -1,8 +1,12 @@
 let mapleader=" "
 
+" testing
+nmap <Leader>t :TestNearest<CR>
+nmap <Leader>T :TestFile<CR>
+nmap <Leader>TT :TestSuite<CR>
 " split resize
-nnoremap <Leader>+ 10<C-w>>
-nnoremap <Leader>- 10<C-w><
+nmap <Leader>+ 10<C-w>>
+nmap <Leader>- 10<C-w><
 
 " quick semi
 nmap ; $a;<Esc>
@@ -10,39 +14,54 @@ nmap , $a,<Esc>
 nmap <silent><Leader>w :w<CR>
 nmap <silent><Leader>q :q<CR>
 nmap <silent><Leader>nn :noh<CR>
-nmap <silent><Leader>al :tabonly<CR>
-nmap <silent>Y yyp
-
 " Minimize tags
 nmap <Leader>sm zf%
 nmap <Leader>sn za
 
+" maps Plugin emmet-vim
+nmap <Leader>sr <C-S>,
+vmap <Leader>sr <C-S>,
+
+"marks
+nmap <silent><Leader>dd :delmarks!<CR>
+nmap <silent><Leader>dl :delmarks AD<CR>
+nmap <silent><Leader>dj 'A
+nmap <silent><Leader>dk 'D
+nmap <silent><Leader>du mA
+nmap <silent><Leader>di mD
+nmap <Leader>ds :marks<CR>
+
 " maps insert mode
+inoremap <C-D> <Esc>
 inoremap <C-H> <Left>
 inoremap <C-L> <Right>
 
-" Menu
-nnoremap <Leader>ss :SSave<CR>
-nnoremap <Leader>sd :SClose<CR>
+" maps visual mode
+vmap <C-D> <Esc>
+
 
 " indent
 nmap <Leader>se i<CR><Esc>
-nmap <Leader>sp o<Esc>p
-nmap <Leader>si :CocCommand prettier.formatFile<CR>
+nmap <Leader>sa a<CR><Esc>ko
+nmap <Leader>sp o<C-R>"<Esc>
+nmap <Leader>si <Plug>(Prettier)
 
 " shorter commands
 cnoreabbrev blame Gblame
+cnoreabbrev find NERDTreeFind
 cnoreabbrev diff Gdiff
-
+cnoreabbrev c++ !g++ -std=c++11 % -Wall -g -o %.out && ./%.out
 " plugs
 map <Leader>nt :NERDTreeFind<CR>
+nmap <Leader>nr :NERDTreeFocus<cr>R<c-w><c-p>
 map <Leader>p :Files<CR>
 map <Leader>ag :Ag<CR>
 
-
-" coc menu
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
 inoremap <expr><C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
 inoremap <expr><C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
+
 
 " Remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)
@@ -50,10 +69,12 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
-" tabs navigation
-map <silent>J :tabprevious<cr>
-map <silent>K :tabnext<cr>
+" diagnostics
+nnoremap <leader>kp :let @*=expand("%")<CR>
 
+" tabs navigation
+map <Leader>h :tabprevious<cr>
+map <Leader>l :tabnext<cr>
 
 " buffers
 map <Leader>ob :Buffers<cr>
@@ -78,13 +99,17 @@ endfunction
 
 
 " faster scrolling
+nnoremap <silent> <C-e> 10<C-e>
+nnoremap <silent> <C-y> 10<C-y>
 nmap <Leader>f <Plug>(easymotion-s2)
+
 
 " git
 nnoremap <Leader>G :G<cr>
 nnoremap <Leader>gp :Git push<cr>
 nnoremap <Leader>gl :Git pull<cr>
 nnoremap <Leader>ga :Git add .<cr>
+
 
 set splitright
 function! OpenTerminal()
