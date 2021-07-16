@@ -36,19 +36,23 @@ cnoreabbrev diff Gdiff
 
 " plugs
 map <Leader>nt :NERDTreeFind<CR>
-map <Leader>p :Files<CR>
+map <silent><Leader>p :Telescope find_files<CR>
 map <Leader>ag :Ag<CR>
 
 
 " coc menu
+inoremap <silent><expr> <c-space> coc#refresh()
 inoremap <expr><C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
 inoremap <expr><C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                        \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " Remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+nmap <Leader>rn <Plug>(coc-rename)
 
 " tabs navigation
 map <silent>J :tabprevious<cr>

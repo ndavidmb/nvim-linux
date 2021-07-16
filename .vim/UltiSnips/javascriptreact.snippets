@@ -6,7 +6,7 @@ def cap(word):
 endglobal
 
 snippet clg "console.log()" b
-console.log('$1', $2});
+console.log('$1', $2);
 endsnippet
 
 snippet imp "import from ''" b
@@ -32,7 +32,7 @@ const [ $2 ] = $1;
 endsnippet
 
 
-snippet rfc "React function component" b
+snippet rafc "React function component" b
 import React from 'react'
 
 const ${1:`!v expand('%:t:r')`} = ($2) => {
@@ -44,7 +44,7 @@ const ${1:`!v expand('%:t:r')`} = ($2) => {
 export default $1
 endsnippet
 snippet ust "use state" b
-const [$1, use`!p snip.rv = cap(t[1])`] = useState($2);
+const [$1, set`!p snip.rv = cap(t[1])`] = useState($2);
 endsnippet
 
 snippet usf "use effect" b

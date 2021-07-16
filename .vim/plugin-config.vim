@@ -31,10 +31,19 @@ let NERDTreeAutoDeleteBuffer=1
 let NERDTreeMinimalUI=1
 let NERDTreeDirArrows=1
 let NERDTreeShowLineNumbers=1
-let NERDTreeMapOpenInTab='tt'
+let NERDTreeMapOpenInTab='dl'
 
 let g:javascript_plugin_flow = 1
 
+let g:user_emmet_settings = {
+                  \     'javascriptreact': {
+                  \           'extends': 'jsx',
+                  \     },
+                  \}
+
+let g:user_emmet_install_global = 0
+autocmd FileType html,css,javascriptreact,js EmmetInstall
+let g:user_emmet_leader_key='<C-S>'
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsSnippetDirectories=['~/.config/nvim-linux/.vim/UltiSnips']
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -55,19 +64,11 @@ let g:coc_global_extensions=[
                   \'coc-prettier',
                   \'coc-tabnine']
 
-nmap <Leader>rn <Plug>(coc-rename)
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-                        \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 autocmd FileType scss setl iskeyword+=@-@
-" vim fugitive
-command! -bang -nargs=? -complete=dir GFiles
-  \ call fzf#vim#gitfiles(<q-args>, fzf#vim#with_preview(), <bang>0)
 
-command! -bang -nargs=* Ag
-  \ call fzf#vim#ag(<q-args>, fzf#vim#with_preview(), <bang>0)
-
-command! -bang -nargs=? -complete=dir Files
-  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+"let g:fzf_layout={'up':'~10%'}
+"let g:fzf_preview_window=[]
+"let $FZF_DEFAULT_OPTS='--layout=reverse'
 
 " if hidden is not set, TextEdit might fail.
 set hidden
@@ -90,33 +91,3 @@ set signcolumn=yes
 
 " fugitive always vertical diffing
 set diffopt+=vertical
-
-let $FZF_DEFAULT_OPTS='--layout=reverse'
-
-let g:startify_session_dir = '~/.config/vim/.vim/sessions'
-let g:startify_bookmarks = [
-                  \{'d': '~/Documentos'},
-                  \{'v': '~/.config/configs'},
-                  \]
-
-let g:startify_fortune_use_unicode = 1
-
-let g:header_string = [
-                  \'• • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • •',
-                  \'•      ████    █████████████████     ██████  ██████      ██████████████ •',
-                  \'•      ████    ████        ██        ██   ████    ██     ██   ██   ████ •',
-                  \'•      ████    █████████   ██        ██   ████    ██     ██   ██   ████ •',
-                  \'• ██   ████    ██     ██   ██        ██   ████    ██     ██   ██        •',
-                  \'•  █████  ██████ ███████   ██        ██████  ██████      ██   ██   ████ •',
-                  \'• • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • •',
-                  \]
-let g:startify_custom_header = 'startify#pad(g:header_string)'
-
-let g:startify_commands = [{'g': ':G | only'}]
-
-let g:startify_lists = [
-      \ { 'header': ['   Sessions'],       'type': 'sessions' },
-      \ { 'header': ['   MRU '. getcwd()], 'type': 'dir' },
-      \ { 'header': ['   Bookmarks'],      'type': 'bookmarks' },
-      \ { 'header': ['   Commands'],      'type': 'commands' }
-      \ ]
