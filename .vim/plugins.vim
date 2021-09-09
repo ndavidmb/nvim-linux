@@ -33,7 +33,6 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
 Plug 'easymotion/vim-easymotion'
 Plug 'yggdroot/indentline'
@@ -41,8 +40,8 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'nicwest/vim-http'
 Plug 'mattn/emmet-vim' 
 Plug 'kqito/vim-easy-replace'
+
 " git
-Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 
 "start

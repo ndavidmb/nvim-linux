@@ -5,8 +5,6 @@ nnoremap <Leader>+ 10<C-w>>
 nnoremap <Leader>- 10<C-w><
 
 " quick semi
-nmap ; $a;<Esc>
-nmap , $a,<Esc>
 nmap <silent><Leader>w :w<CR>
 nmap <silent><Leader>q :q<CR>
 nmap <silent><Leader>nn :noh<CR>
@@ -16,6 +14,8 @@ nmap <silent>Y yyp
 " Minimize tags
 nmap <Leader>sm zf%
 nmap <Leader>sn za
+
+vmap <C-n> y/<C-r>"<CR>
 
 " maps insert mode
 inoremap <C-H> <Left>
@@ -28,17 +28,16 @@ nnoremap <Leader>sd :SClose<CR>
 " indent
 nmap <Leader>se i<CR><Esc>
 nmap <Leader>sp o<Esc>p
-nmap <Leader>si :CocCommand prettier.formatFile<CR>
+nmap <silent><Leader>si :CocCommand prettier.formatFile<CR>
 
 " shorter commands
 cnoreabbrev blame Gblame
 cnoreabbrev diff Gdiff
 
 " plugs
-map <Leader>nt :NERDTreeFind<CR>
+map <silent><Leader>nt :NERDTreeFind<CR>
 map <silent><Leader>p :Telescope find_files<CR>
-map <Leader>ag :Ag<CR>
-
+map <silent><Leader>ag :Telescope live_grep<CR>
 
 " coc menu
 inoremap <silent><expr> <c-space> coc#refresh()
@@ -52,7 +51,7 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
-nmap <Leader>rn <Plug>(coc-rename)
+nmap <Leader> rn <Plug>(coc-rename)
 
 " tabs navigation
 map <silent>J :tabprevious<cr>
@@ -61,23 +60,28 @@ map <silent>K :tabnext<cr>
 
 " buffers
 map <Leader>ob :Buffers<cr>
-nnoremap <C-Q> :call ReOpenTerminal()<CR>
+nnoremap <silent><C-Q> :call ReOpenTerminal()<CR>
 function! ReOpenTerminal()
-  execute "bel 10 sp"
-  execute "b term"
-  execute "set nonu"
-  execute "set nornu"
+  try
+    execute "bel 10 sp"
+    execute "b term"
+    execute "set nonu"
+    execute "set nornu"
 
-  " toggle insert on enter/exit
-  silent au BufLeave <buffer> stopinsert!
-  silent au BufWinEnter,WinEnter <buffer> startinsert!
+    " toggle insert on enter/exit
+    silent au BufLeave <buffer> stopinsert!
+    silent au BufWinEnter,WinEnter <buffer> startinsert!
 
-  " set maps inside terminal buffer
-  execute "tnoremap <buffer> <C-h> <C-\\><C-n><C-w><C-h>"
-  execute "tnoremap <buffer> <C-t> <C-\\><C-n>:q<CR>"
-  execute "tnoremap <buffer> <C-\\><C-\\> <C-\\><C-n>"
+    " set maps inside terminal buffer
+    execute "tnoremap <buffer> <C-h> <C-\\><C-n><C-w><C-h>"
+    execute "tnoremap <buffer> <C-t> <C-\\><C-n>:q<CR>"
+    execute "tnoremap <buffer> <C-\\><C-\\> <C-\\><C-n>"
 
-  startinsert!
+    startinsert!
+  catch
+    execute "q"
+    echo "No se ha encontrado el terminal"
+  endtry
 endfunction
 
 
@@ -124,4 +128,4 @@ function! OpenTerminal()
     startinsert!
   endif
 endfunction
-nnoremap <C-t> :call OpenTerminal()<CR>
+nnoremap <silent><C-t> :call OpenTerminal()<CR>
