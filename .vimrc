@@ -12,9 +12,9 @@ set sw=2
 set relativenumber
 set termguicolors
 set background=dark
-so ~/.config/nvim-linux/.vim/plugins.vim
-so ~/.config/nvim-linux/.vim/plugin-config.vim
-so ~/.config/nvim-linux/.vim/maps.vim
+so ~/.config/nvim-linux/nvim-configs/plugins.vim
+so ~/.config/nvim-linux/nvim-configs/plugin-config.vim
+so ~/.config/nvim-linux/nvim-configs/maps.vim
 
 colorscheme gruvbox
 let g:gruvbox_contrast_dark="hard"
