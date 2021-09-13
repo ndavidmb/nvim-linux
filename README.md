@@ -12,5 +12,5 @@ para poder instalar vim-plug podemos ir a la siguiente url https://github.com/ju
 en la sección de **instalar la versión de neovim y no la de vim**
 
 ### Instalación de mis configuraciones
-Ahora lo siguiente que debemos hacer es dirigirnos a ```~/.config````````` y clonar este repositorio
-```
+Ahora lo siguiente que debemos hacer es dirigirnos a ```~/.config``` y clonar este repositorio
+después digitaremos en la consola la palabra ```nvim``` y escribiremos ```:PlugInstall```
