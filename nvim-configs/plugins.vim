@@ -8,7 +8,6 @@ Plug 'maximbaz/lightline-ale'
 Plug 'itchyny/lightline.vim'
 
 " Themes
-Plug 'ryanoasis/vim-devicons'
 Plug 'morhetz/gruvbox'
 
 " Tree

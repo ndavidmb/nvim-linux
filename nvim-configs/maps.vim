@@ -58,4 +58,25 @@ map <Leader>ob :Buffers<cr>
 nmap <Leader>f <Plug>(easymotion-s2)
 
 " Faster compile
-nmap <Leader>ts :!ts-node %<CR>
+nmap <silent><Leader>x :call ExecuteScript()<CR>
+
+function! ExecuteScript()
+	let file_name = expand('%:t:r')
+	let dictionary = {
+				\  'python': 'python3.9', 
+				\  'typescript': 'ts-node',
+				\  'javascript': 'node',
+				\  'cpp': "g++ -o ".file_name."_exec"
+				\}
+	execute "silent w"
+	try
+		if &filetype == "cpp"
+			execute "silent !".dictionary[&filetype]." %"
+			execute "! ./".file_name."_exec"
+		else
+			execute "!".dictionary[&filetype]." %"
+		endif
+	catch /.*/
+    echo "Caught error: " . v:exception
+	endtry
+endfunction

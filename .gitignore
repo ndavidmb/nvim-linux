@@ -1,3 +1,4 @@
 .DS_Store
 .netrwhist
-**/nvim-configs/plugged/
+#**/home/david/.config/nvim-linux/nvim-configs/plugged/
+nvim-configs/plugged
