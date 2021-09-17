@@ -57,6 +57,8 @@ nmap <Leader> rn <Plug>(coc-rename)
 map <silent>J :tabprevious<cr>
 map <silent>K :tabnext<cr>
 
+nmap <Leader>ts :!ts-node %<CR>
+
 
 " buffers
 map <Leader>ob :Buffers<cr>
