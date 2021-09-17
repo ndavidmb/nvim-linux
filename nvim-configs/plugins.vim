@@ -2,6 +2,8 @@ call plug#begin('~/.config/nvim-linux/nvim-configs/plugged')
 
 " syntax
 Plug 'sheerun/vim-polyglot'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+Plug 'norcalli/nvim-colorizer.lua'
 
 " status bar
 Plug 'maximbaz/lightline-ale'

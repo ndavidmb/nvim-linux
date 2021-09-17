@@ -1,4 +1,13 @@
 syntax on
+set hidden
+
+set nobackup
+set nowritebackup
+set cmdheight=1
+set updatetime=300
+set shortmess+=c
+set signcolumn=yes
+set diffopt+=vertical
 set number
 set mouse=a
 set numberwidth=1

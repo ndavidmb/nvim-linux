@@ -45,7 +45,7 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
-nmap <Leader> rn <Plug>(coc-rename)
+nmap <Leader>rn <Plug>(coc-rename)
 
 " tabs navigation
 map <silent>J :tabprevious<cr>
@@ -61,22 +61,22 @@ nmap <Leader>f <Plug>(easymotion-s2)
 nmap <silent><Leader>x :call ExecuteScript()<CR>
 
 function! ExecuteScript()
-	let file_name = expand('%:t:r')
-	let dictionary = {
-				\  'python': 'python3.9', 
-				\  'typescript': 'ts-node',
-				\  'javascript': 'node',
-				\  'cpp': "g++ -o ".file_name."_exec"
-				\}
-	execute "silent w"
-	try
-		if &filetype == "cpp"
-			execute "silent !".dictionary[&filetype]." %"
-			execute "! ./".file_name."_exec"
-		else
-			execute "!".dictionary[&filetype]." %"
-		endif
-	catch /.*/
+  let file_name = expand('%:t:r')
+  let dictionary = {
+  \  'python': 'python3.9', 
+  \  'typescript': 'ts-node',
+  \  'javascript': 'node',
+  \  'cpp': "g++ -o ".file_name."_exec"
+  \}
+  execute "silent w"
+  try
+    if &filetype == "cpp"
+      execute "silent !".dictionary[&filetype]." %"
+      execute "! ./".file_name."_exec"
+    else
+      execute "!".dictionary[&filetype]." %"
+    endif
+  catch /.*/
     echo "Caught error: " . v:exception
-	endtry
+  endtry
 endfunction
