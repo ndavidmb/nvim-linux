@@ -1,15 +1,15 @@
-call plug#begin('~/.config/nvim-linux/.vim/plugged')
+call plug#begin('~/.config/nvim-linux/nvim-configs/plugged')
 
 " syntax
 Plug 'sheerun/vim-polyglot'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+Plug 'norcalli/nvim-colorizer.lua'
 
 " status bar
 Plug 'maximbaz/lightline-ale'
 Plug 'itchyny/lightline.vim'
 
 " Themes
-Plug 'dracula/vim'
-Plug 'ryanoasis/vim-devicons'
 Plug 'morhetz/gruvbox'
 
 " Tree
@@ -39,11 +39,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'yggdroot/indentline'
 Plug 'scrooloose/nerdcommenter'
 Plug 'nicwest/vim-http'
-Plug 'mattn/emmet-vim' 
 Plug 'kqito/vim-easy-replace'
-
-" git
-Plug 'tpope/vim-repeat'
 
 "start
 Plug 'mhinz/vim-startify'
