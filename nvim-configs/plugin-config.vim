@@ -1,6 +1,16 @@
 " HTML, JSX
 let g:closetag_filenames = '*.html,*.js,*.jsx,*.ts,*.tsx'
 
+" Rainbow
+"let g:rainbow_active = 1
+"let g:rainbow_load_separately = [
+    "\ [ '*' , [['(', ')'], ['\[', '\]'], ['{', '}']] ],
+    "\ [ '*.tex' , [['(', ')'], ['\[', '\]']] ],
+    "\ [ '*.cpp' , [['(', ')'], ['\[', '\]'], ['{', '}']] ],
+    "\ [ '*.{html,htm}' , [['(', ')'], ['\[', '\]'], ['{', '}'], ['<\a[^>]*>', '</[^>]*>']] ],
+    "\ ]
+
+
 "  nerdtree
 let NERDTreeShowHidden=1
 let NERDTreeQuitOnOpen=1
@@ -33,6 +43,9 @@ let g:coc_global_extensions=[
                   \'coc-html',
                   \'coc-html-css-support',
                   \'coc-emmet', 
+                  \'coc-python',
+                  \'coc-phpls',
+                  \'coc-css',
                   \'coc-prettier',
                   \'coc-tabnine']
 
@@ -46,6 +59,7 @@ require('telescope').setup{
 
 EOF
 
+let g:indentLine_char = '┆'
 
 "Lightline
 let g:lightline = {
@@ -64,7 +78,7 @@ let g:lightline = {
       \ 'component_function': {
       \   'gitbranch': 'fugitive#head',
       \ },
-      \ 'colorscheme': 'solarized',
+      \ 'colorscheme': 'ayu',
       \ 'subseparator': {
       \   'left': '',
       \   'right': ''

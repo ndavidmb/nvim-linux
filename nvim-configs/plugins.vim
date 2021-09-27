@@ -11,6 +11,7 @@ Plug 'itchyny/lightline.vim'
 
 " Themes
 Plug 'morhetz/gruvbox'
+Plug 'ayu-theme/ayu-vim'
 
 " Tree
 Plug 'scrooloose/nerdtree'
@@ -40,7 +41,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'nicwest/vim-http'
 Plug 'kqito/vim-easy-replace'
 
-"start
-Plug 'mhinz/vim-startify'
+"Git hub merge
+Plug 'jsit/conflict-syntax.vim'
 
 call plug#end()

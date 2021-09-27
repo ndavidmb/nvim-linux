@@ -6,9 +6,9 @@ set nowritebackup
 set cmdheight=1
 set updatetime=300
 set shortmess+=c
+
 set signcolumn=yes
 set diffopt+=vertical
-set number
 set mouse=a
 set numberwidth=1
 set clipboard=unnamedplus
@@ -28,7 +28,9 @@ so ~/.config/nvim-linux/nvim-configs/maps.vim
 colorscheme gruvbox
 let g:gruvbox_contrast_dark="hard"
 
+highlight Pmenu ctermfg=0 ctermbg=13 guifg=#E6E1CF guibg=#253340
 highlight Normal ctermbg=NONE guibg=NONE
+
 set laststatus=2
 set noshowmode
 

@@ -1,5 +1,8 @@
 let mapleader=" "
 
+" Shorter commands
+cnoreabbrev syn syntax sync fromstart
+
 " split resize
 nnoremap <Leader>+ 10<C-w>>
 nnoremap <Leader>- 10<C-w><
