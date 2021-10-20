@@ -27,7 +27,7 @@ let g:user_emmet_settings = {
                   \}
 
 " UltiSnips
-let g:UltiSnipsSnippetDirectories=['~/.config/nvim-linux/nvim-configs/UltiSnips']
+let g:UltiSnipsSnippetDirectories=['~/.config/nvim/nvim-configs/UltiSnips']
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
