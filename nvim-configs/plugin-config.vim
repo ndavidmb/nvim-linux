@@ -44,10 +44,8 @@ let g:coc_global_extensions=[
                   \'coc-html-css-support',
                   \'coc-emmet', 
                   \'coc-python',
-                  \'coc-phpls',
                   \'coc-css',
-                  \'coc-prettier',
-                  \'coc-tabnine']
+                  \'coc-prettier']
 
 " Telescope
 lua << EOF
